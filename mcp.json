@@ -1,0 +1,62 @@
+{
+  "mcpServers": {
+    "jacques-charles-ai": {
+      "command": "cargo",
+      "args": [
+        "run",
+        "--release",
+        "--quiet"
+      ],
+      "env": {
+        "RUST_LOG": "info",
+        "TITAN_PROTOCOL": "JACQUESCHARLES",
+        "TARGET_CHAIN": "Sui",
+        "FIPS_203_LEVEL": "ML-KEM-768",
+        "FIPS_204_LEVEL": "ML-DSA-65"
+      },
+      "tools": [
+        {
+          "name": "solve_charles_isobaric_expansion",
+          "description": "Calculates gas volume expansion under constant pressure (V1 / T1 = V2 / T2 in Kelvin)",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "initial_v_m3": {
+                "type": "number"
+              },
+              "initial_t_k": {
+                "type": "number"
+              },
+              "final_t_k": {
+                "type": "number"
+              }
+            },
+            "required": [
+              "initial_v_m3",
+              "initial_t_k",
+              "final_t_k"
+            ]
+          }
+        },
+        {
+          "name": "calculate_hydrogen_aerostat_net_lift",
+          "description": "Computes net buoyant payload lift of hydrogen gas envelope vs ambient air density at altitude",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "envelope_volume_m3": {
+                "type": "number"
+              },
+              "altitude_m": {
+                "type": "number"
+              }
+            },
+            "required": [
+              "envelope_volume_m3"
+            ]
+          }
+        }
+      ]
+    }
+  }
+}
